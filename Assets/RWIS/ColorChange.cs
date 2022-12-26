@@ -10,6 +10,9 @@ public class ColorChange : MonoBehaviour
     public float horizon = 0;
     public float scale = 0.001f;
     public Slider slider;
+    public static GameObject controlpanel;
+    public PanelChange controlpanelscript;
+    public GameObject endPanel;
 
     // public float time = 0;
     void Start()
@@ -18,6 +21,8 @@ public class ColorChange : MonoBehaviour
         //mesh = GetComponent<MeshRenderer>();
         //mesh.material.color = mesh.material.color - new Color32(0, 0, 0, 25);
         //StartCoroutine("Transparent");
+        controlpanel = GameObject.Find("ControlPanel");
+        controlpanelscript = controlpanel.GetComponent<PanelChange>();
     }
     
     void Update()
@@ -27,6 +32,13 @@ public class ColorChange : MonoBehaviour
             // time += Time.deltaTime;
             slider.value--;
             //mesh.material.color = mesh.material.color - new Color(0, 0, 0, scale);
+        }
+        if (slider.value <= 0)
+        {
+            controlpanelscript.titleFlag = 0;
+            controlpanelscript.gameFlag = 0;
+            controlpanelscript.endFlag = 1;
+            endPanel.SetActive(true);
         }
         //Debug.Log(mesh.material.color);
     }

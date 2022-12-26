@@ -106,10 +106,10 @@ public class Poi : MonoBehaviour
         //transform.position = currentGyro;
 
         float xPos = transform.position.x + joystick.Horizontal * virtualControllerScale;
-        xPos = Math.Min(Math.Max(xPos, -2.0f), 2.0f);
+        xPos = Math.Min(Math.Max(xPos, -3.0f), 3.0f);
 
         float zPos = transform.position.z + joystick.Vertical * virtualControllerScale;
-        zPos = Math.Min(Math.Max(zPos, -5.0f), 5.0f);
+        zPos = Math.Min(Math.Max(zPos, -7.0f), 7.0f);
         transform.position = new Vector3(xPos, -1 * currentGyro.y * scale + center, zPos);
         //Debug.Log(currentGyro);
         print(transform.position);
