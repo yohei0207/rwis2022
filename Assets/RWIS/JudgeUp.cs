@@ -8,11 +8,15 @@ public class JudgeUp : MonoBehaviour
     private bool isDisplay = false;
     private float ellapsedTime = 0.0f;
     private Vector3 displayPos;
+    
+    public AudioClip sound1;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         Input.gyro.enabled = true;
         // Input.acceleration.enabled = true;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,11 +39,9 @@ public class JudgeUp : MonoBehaviour
         }
     }
 
-    
+
     void OnTriggerEnter(Collider collision)
     {
-        //Debug.Log("success!");
-        //Debug.Log(collision.gameObject.name); // ぶつかった相手の名前を取得
         Vector3 acc = Input.gyro.userAcceleration;
         Debug.Log(acc);
         if (collision.gameObject.name == "poi" && acc.y >= 0)
@@ -54,6 +56,8 @@ public class JudgeUp : MonoBehaviour
             displayPos = new Vector3(Random.Range(-0.5f, 0.5f), 5, Random.Range(-0.5f, 0.5f));
             targetFish.transform.position = displayPos;
             isDisplay = true;
+
+            audioSource.PlayOneShot(sound1);
         }
     }
 }
