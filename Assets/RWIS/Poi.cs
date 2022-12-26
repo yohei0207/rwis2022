@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Poi : MonoBehaviour
 {
     public float SnapRange = 1.0f;
     public float center = -2.0f;
     public float scale = 10.0f;
+    public FixedJoystick joystick;
+    public float virtualControllerScale = 0.01f;
 
     GameObject[] snapPointList;
     Vector3 ofsPos;
@@ -25,6 +28,7 @@ public class Poi : MonoBehaviour
         Input.compass.enabled = true;
     }
     
+    /*
     void OnMouseDown()
     {
         var mPos = Input.mousePosition;
@@ -52,6 +56,7 @@ public class Poi : MonoBehaviour
         //pos.y = currentGyro.z;
         transform.position = pos;
     }
+*/
     
 
     // スナップ位置を計算
@@ -99,9 +104,16 @@ public class Poi : MonoBehaviour
         //スナップの動きの反映
         Vector3 currentGyro = Input.gyro.gravity;
         //transform.position = currentGyro;
-        
-        transform.position = new Vector3(transform.position.x, -1 * currentGyro.y * scale + center, transform.position.z);
+
+        float xPos = transform.position.x + joystick.Horizontal * virtualControllerScale;
+        xPos = Math.Min(Math.Max(xPos, -2.0f), 2.0f);
+
+        float zPos = transform.position.z + joystick.Vertical * virtualControllerScale;
+        zPos = Math.Min(Math.Max(zPos, -5.0f), 5.0f);
+        transform.position = new Vector3(xPos, -1 * currentGyro.y * scale + center, zPos);
         //Debug.Log(currentGyro);
+        print(transform.position);
+       
     }
     
 }

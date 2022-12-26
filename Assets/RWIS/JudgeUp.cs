@@ -19,7 +19,7 @@ public class JudgeUp : MonoBehaviour
     void Update()
     {
         Vector3 acc = Input.gyro.userAcceleration;
-        Debug.Log(acc);
+        //Debug.Log(acc);
         if (isDisplay == true)
         {
             string fishName = transform.parent.gameObject.name;
