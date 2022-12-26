@@ -17,10 +17,8 @@ public class MoveRandom : MonoBehaviour
         time = 0;
         vecX = Random.Range(-10, 10);
         vecZ = Random.Range(-10, 10);
-        target = new Vector3(vecX, -2, vecZ);
-        //vecX = Random.Range(-10, 10);
-        //vecZ = Random.Range(-10, 10);
-        //transform.position = new Vector3(vecX, -2, vecZ);
+        target = new Vector3(vecX, transform.position.y, vecZ);
+        // target = new Vector3(vecX, -2, vecZ);
         moveTime = Random.Range(2.0f, 5.0f);
     }
 
@@ -32,7 +30,7 @@ public class MoveRandom : MonoBehaviour
         {
             vecX = Random.Range(-10, 10);
             vecZ = Random.Range(-10, 10);
-            target = new Vector3(vecX, -2, vecZ);
+            target = new Vector3(vecX, transform.position.y, vecZ);
             time = 0.0f;
             spd = 0.01f;
         }
