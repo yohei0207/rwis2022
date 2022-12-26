@@ -12,7 +12,7 @@ public class RandomGenerator : MonoBehaviour
         int i;
         for (i = 0; i < num; i++)
         {
-            GameObject fish = Instantiate(originObject, new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-3.0f, -1.0f), Random.Range(-10.0f, 10.0f)), Quaternion.Euler(0, 90, 90));
+            GameObject fish = Instantiate(originObject, new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-3.0f, -1.5f), Random.Range(-10.0f, 10.0f)), Quaternion.Euler(0, 90, 90));
             // GameObject fish = Instantiate(originObject, new Vector3(Random.Range(-10.0f, 10.0f), -4, Random.Range(-10.0f, 10.0f)), Quaternion.Euler(0, 90, 90));
             fish.name = "fish" + i.ToString();
         }
