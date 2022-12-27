@@ -11,6 +11,9 @@ public class Poi : MonoBehaviour
     public FixedJoystick joystick;
     public float virtualControllerScale = 0.01f;
 
+    public static GameObject controlpanel;
+    public PanelChange controlpanelscript;
+
     GameObject[] snapPointList;
     Vector3 ofsPos;
     void Awake()
@@ -26,6 +29,9 @@ public class Poi : MonoBehaviour
         Input.gyro.enabled = true;
         // 入力にコンパスをONにする
         Input.compass.enabled = true;
+
+        controlpanel = GameObject.Find("ControlPanel");
+        controlpanelscript = controlpanel.GetComponent<PanelChange>();
     }
     
     /*
@@ -101,19 +107,26 @@ public class Poi : MonoBehaviour
 
     void Update()
     {
-        //スナップの動きの反映
-        Vector3 currentGyro = Input.gyro.gravity;
-        //transform.position = currentGyro;
 
-        float xPos = transform.position.x + joystick.Horizontal * virtualControllerScale;
-        xPos = Math.Min(Math.Max(xPos, -3.0f), 3.0f);
+        if (controlpanelscript.gameFlag == 1)
+        {
+            //スナップの動きの反映
+            Vector3 currentGyro = Input.gyro.gravity;
+            //transform.position = currentGyro;
 
-        float zPos = transform.position.z + joystick.Vertical * virtualControllerScale;
-        zPos = Math.Min(Math.Max(zPos, -7.0f), 7.0f);
-        transform.position = new Vector3(xPos, -1 * currentGyro.y * scale + center, zPos);
-        //Debug.Log(currentGyro);
-        //print(transform.position);
-       
+            float xPos = transform.position.x + joystick.Horizontal * virtualControllerScale;
+            xPos = Math.Min(Math.Max(xPos, -3.0f), 3.0f);
+
+            float yPos = -1 * currentGyro.y * scale + center;
+            yPos = Math.Min(Math.Max(yPos, -4.0f), 3.0f);
+
+            float zPos = transform.position.z + joystick.Vertical * virtualControllerScale;
+            zPos = Math.Min(Math.Max(zPos, -7.0f), 7.0f);
+            transform.position = new Vector3(xPos, yPos, zPos);
+            //Debug.Log(currentGyro);
+            //print(transform.position);
+        }
+
     }
     
 }

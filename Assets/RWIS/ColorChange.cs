@@ -14,11 +14,14 @@ public class ColorChange : MonoBehaviour
     public PanelChange controlpanelscript;
     public GameObject endPanel;
     public int lifeFlag = 0;
+    public GameObject poi;
 
     // public float time = 0;
     void Start()
     {
         slider.value = 1000;
+        GameObject.Find("score").SetActive(false);
+        GameObject.Find("Slider").SetActive(false);
         //mesh = GetComponent<MeshRenderer>();
         //mesh.material.color = mesh.material.color - new Color32(0, 0, 0, 25);
         //StartCoroutine("Transparent");
@@ -34,6 +37,10 @@ public class ColorChange : MonoBehaviour
             controlpanelscript.gameFlag = 0;
             controlpanelscript.endFlag = 1;
             endPanel.SetActive(true);
+            poi = GameObject.Find("poi");
+            Vector3 tmp = poi.transform.position;
+            GameObject.Find("poi_broken").transform.position = new Vector3(tmp.x, tmp.y, tmp.z);
+
             lifeFlag = 1;
         }
         else if (controlpanelscript.gameFlag == 0)
