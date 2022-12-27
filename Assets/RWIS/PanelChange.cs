@@ -8,18 +8,21 @@ public class PanelChange : MonoBehaviour
     public int titleFlag = 0;
     public int gameFlag = 0;
     public int endFlag = 0;
+    public float spd_set = 0.01f;
     public GameObject menuPanel;
     public GameObject endPanel;
+    public GameObject levelPanel;
     public static GameObject ami;
     public static ColorChange colorchange;
     public static GameObject counter;
     public static CountScore cs;
     public GameObject originObject;
     public GameObject goldOriginObject;
-    public int num = 20;
     public GameObject slider;
     public GameObject score;
     public GameObject joystick;
+    GameObject fishGenerator;
+    RandomGenerator randomGeneratorScript;
     //public GameObject poi;
 
 
@@ -27,6 +30,7 @@ public class PanelChange : MonoBehaviour
     {
         menuPanel.SetActive(true);
         endPanel.SetActive(false);
+        levelPanel.SetActive(false);
         slider.SetActive(false);
         score.SetActive(false);
         joystick.SetActive(false);
@@ -47,11 +51,15 @@ public class PanelChange : MonoBehaviour
     {
         menuPanel.SetActive(false);
         endPanel.SetActive(false);
+        levelPanel.SetActive(false);
         score.SetActive(true);
         slider.SetActive(true);
         joystick.SetActive(true);
         //poi.SetActive(true);
         GameObject.Find("poi").transform.position = new Vector3(0, 0, 0);
+        fishGenerator = GameObject.Find("FishGenerator");
+        randomGeneratorScript = fishGenerator.GetComponent<RandomGenerator>();
+        randomGeneratorScript.generateFlag = true;
 
         titleFlag = 0;
         gameFlag = 1;
@@ -62,6 +70,7 @@ public class PanelChange : MonoBehaviour
     {
         endPanel.SetActive(false);
         menuPanel.SetActive(true);
+        levelPanel.SetActive(false);
         score.SetActive(false);
         slider.SetActive(false);
         joystick.SetActive(false);
@@ -70,7 +79,6 @@ public class PanelChange : MonoBehaviour
         titleFlag = 1;
         gameFlag = 0;
         endFlag = 0;
-        Debug.Log("return");
 
         //ライフゲージの初期化
         colorchange.slider.value = 1000;
@@ -83,30 +91,47 @@ public class PanelChange : MonoBehaviour
         GameObject.Find("poi_broken").transform.position = new Vector3(-20, 0, 0);
         GameObject.Find("poi").transform.position = new Vector3(20, 0, 0);
 
-        for (int i = 0; i < num; i++)
+        GameObject[] goldfishes = GameObject.FindGameObjectsWithTag("GoldFish");
+        foreach (GameObject goldfish in goldfishes)
         {
-            string fishName = "fish" + i.ToString();
-            GameObject targetFish = GameObject.Find(fishName);
-            Destroy(targetFish);
+            Destroy(goldfish);
         }
-
-        for (int i = 0; i < num; i++)
+        goldfishes = GameObject.FindGameObjectsWithTag("GoldGoldFish");
+        foreach (GameObject goldfish in goldfishes)
         {
-            if (i >= 2)
-            {
-                GameObject fish = Instantiate(originObject, new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-3.0f, -1.5f), Random.Range(-10.0f, 10.0f)), Quaternion.Euler(0, 90, 90));
-                // GameObject fish = Instantiate(originObject, new Vector3(Random.Range(-10.0f, 10.0f), -4, Random.Range(-10.0f, 10.0f)), Quaternion.Euler(0, 90, 90));
-                fish.name = "fish" + i.ToString();
-            }
-            else
-            {
-                GameObject fish = Instantiate(goldOriginObject, new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-3.0f, -1.5f), Random.Range(-10.0f, 10.0f)), Quaternion.Euler(0, 90, 90));
-                // GameObject fish = Instantiate(originObject, new Vector3(Random.Range(-10.0f, 10.0f), -4, Random.Range(-10.0f, 10.0f)), Quaternion.Euler(0, 90, 90));
-                fish.name = "fish" + i.ToString();
-
-            }
+            Destroy(goldfish);
         }
+    }
 
-      
+    public void SelectLevel()
+    {
+        endPanel.SetActive(false);
+        menuPanel.SetActive(false);
+        levelPanel.SetActive(true);
+        score.SetActive(false);
+        slider.SetActive(false);
+        joystick.SetActive(false);
+    }
+
+    public void SelectEasyLevel()
+    {
+        endPanel.SetActive(false);
+        menuPanel.SetActive(true);
+        levelPanel.SetActive(false);
+        score.SetActive(false);
+        slider.SetActive(false);
+        joystick.SetActive(false);
+        spd_set = 0.01f;
+    }
+
+    public void SelectHardLevel()
+    {
+        endPanel.SetActive(false);
+        menuPanel.SetActive(true);
+        levelPanel.SetActive(false);
+        score.SetActive(false);
+        slider.SetActive(false);
+        joystick.SetActive(false);
+        spd_set = 0.05f;
     }
 }
