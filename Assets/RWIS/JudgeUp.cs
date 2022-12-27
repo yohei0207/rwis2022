@@ -53,7 +53,7 @@ public class JudgeUp : MonoBehaviour
     void OnTriggerEnter(Collider collision)
     {
         Vector3 acc = Input.gyro.userAcceleration;
-        Debug.Log(acc);
+        // Debug.Log(acc);
         if (collision.gameObject.name == "poi" && acc.y >= 0)
         {
             GameObject counter = GameObject.Find("counter");
