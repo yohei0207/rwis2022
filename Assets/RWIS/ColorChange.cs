@@ -13,6 +13,7 @@ public class ColorChange : MonoBehaviour
     public static GameObject controlpanel;
     public PanelChange controlpanelscript;
     public GameObject endPanel;
+    public int lifeFlag = 0;
 
     // public float time = 0;
     void Start()
@@ -27,18 +28,23 @@ public class ColorChange : MonoBehaviour
     
     void Update()
     {
-        if (transform.position.y < horizon)
-        {
-            // time += Time.deltaTime;
-            slider.value--;
-            //mesh.material.color = mesh.material.color - new Color(0, 0, 0, scale);
-        }
-        if (slider.value <= 0)
+        if (slider.value <= 0 && lifeFlag == 0)
         {
             controlpanelscript.titleFlag = 0;
             controlpanelscript.gameFlag = 0;
             controlpanelscript.endFlag = 1;
             endPanel.SetActive(true);
+            lifeFlag = 1;
+        }
+        else if (controlpanelscript.gameFlag == 0)
+        {
+
+        }
+        else if (transform.position.y < horizon)
+        {
+            // time += Time.deltaTime;
+            slider.value--;
+            //mesh.material.color = mesh.material.color - new Color(0, 0, 0, scale);
         }
         //Debug.Log(mesh.material.color);
     }

@@ -30,7 +30,7 @@ public class JudgeDown : MonoBehaviour
 
         MoveRandom MoveRandomScript = targetFish.GetComponent<MoveRandom>();
         MoveRandomScript.spd = 1.0f;
-        audioSource.PlayOneShot(sound_nigeru);
+        //audioSource.PlayOneShot(sound_nigeru);
     }
 
 }
