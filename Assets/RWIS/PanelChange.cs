@@ -10,6 +10,8 @@ public class PanelChange : MonoBehaviour
     public int endFlag = 0;
     public GameObject menuPanel;
     public GameObject endPanel;
+    public static GameObject ami;
+    public static ColorChange colorchange;
   
     void Start()
     {
@@ -18,6 +20,9 @@ public class PanelChange : MonoBehaviour
         titleFlag = 1;
         gameFlag = 0;
         endFlag = 0;
+
+        ami = GameObject.Find("あみ");
+        colorchange = ami.GetComponent<ColorChange>();
     }
 
     public void GameStart()
@@ -36,5 +41,9 @@ public class PanelChange : MonoBehaviour
         titleFlag = 1;
         gameFlag = 0;
         endFlag = 0;
+        Debug.Log("return");
+        colorchange.slider.value = 1000;
+        colorchange.lifeFlag = 0;
+        
     }
 }
