@@ -112,7 +112,7 @@ public class Poi : MonoBehaviour
         zPos = Math.Min(Math.Max(zPos, -7.0f), 7.0f);
         transform.position = new Vector3(xPos, -1 * currentGyro.y * scale + center, zPos);
         //Debug.Log(currentGyro);
-        print(transform.position);
+        // print(transform.position);
        
     }
     
