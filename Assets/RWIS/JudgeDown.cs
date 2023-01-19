@@ -25,7 +25,7 @@ public class JudgeDown : MonoBehaviour
         //Debug.Log("failed!");
         //Debug.Log(collision.gameObject.name); // ぶつかった相手の名前を取得
         string fishName = transform.parent.gameObject.name;
-        Debug.Log(fishName);
+        // Debug.Log(fishName);
         GameObject targetFish = GameObject.Find(fishName);
 
         MoveRandom MoveRandomScript = targetFish.GetComponent<MoveRandom>();

@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 6020579462387292338}
   m_Layer: 0
   m_Name: goldfish
-  m_TagString: Untagged
+  m_TagString: GoldFish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -888,7 +888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af5a8d829101fd14caeda3d8c07d2ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spd: 0.05
+  spd: 0.01
+  spd_org: 0.01
   moveTime: 2
 --- !u!1 &7189982957130336412
 GameObject:

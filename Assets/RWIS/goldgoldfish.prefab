@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 405786362960820468}
   m_Layer: 0
   m_Name: goldgoldfish
-  m_TagString: Untagged
+  m_TagString: GoldGoldFish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spd: 0.05
+  spd_org: 0.01
   moveTime: 2
 --- !u!1 &5290877644290736044
 GameObject:
