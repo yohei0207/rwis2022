@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Tips/UDPConnect/UDPConnect.unity
-    guid: bf1157b9dc80046ba9f0bd6fe3495de6
-  - enabled: 1
     path: Assets/RWIS/slidemoving.unity
     guid: 7ab90166b3822274286737468c87ef31
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Tips/UDPConnect/UDPConnect.unity
+    guid: bf1157b9dc80046ba9f0bd6fe3495de6
+  - enabled: 0
     path: Assets/RWIS/title.unity
     guid: 5f4ea76470b0a9445b64eef4fa331019
   m_configObjects: {}
