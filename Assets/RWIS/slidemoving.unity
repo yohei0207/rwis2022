@@ -3679,7 +3679,7 @@ PrefabInstance:
     - target: {fileID: 398724492294642274, guid: 66cda196850dc9e49ad9c8a3d76337b2,
         type: 3}
       propertyPath: m_Name
-      value: goldfish_title 1
+      value: goldfish_title
       objectReference: {fileID: 0}
     - target: {fileID: 1063796727179903192, guid: 66cda196850dc9e49ad9c8a3d76337b2,
         type: 3}
@@ -3709,7 +3709,7 @@ PrefabInstance:
     - target: {fileID: 1063796727179903192, guid: 66cda196850dc9e49ad9c8a3d76337b2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -209
+      value: -210
       objectReference: {fileID: 0}
     - target: {fileID: 1063796727179903192, guid: 66cda196850dc9e49ad9c8a3d76337b2,
         type: 3}
